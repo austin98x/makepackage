@@ -1,0 +1,52 @@
+%global app_dir /opt/app
+
+Name:           app
+Version:        ${PKG_VERSION}
+Release:        1.${PKG_RELEASE}
+Summary:        app
+Group:          Applications/Editors
+License:        Proprietary
+URL:            http://www.app.com
+Source1:		opt
+AutoReqProv:    no
+Requires: libc.so.6${PKG_ARCH_PLACEHOLDER}${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.3)${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.3.4)${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.4)${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.7)${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.9)${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.10)${PKG_ARCH_SUFFIX}
+Requires: libc.so.6(GLIBC_2.15)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6${PKG_ARCH_PLACEHOLDER}${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(CXXABI_1.3)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(CXXABI_1.3.1)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(CXXABI_1.3.5)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(GLIBCXX_3.4)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(GLIBCXX_3.4.5)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(GLIBCXX_3.4.10)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(GLIBCXX_3.4.15)${PKG_ARCH_SUFFIX}
+Requires: libstdc++.so.6(GLIBCXX_3.4.16)${PKG_ARCH_SUFFIX}
+
+%description
+app is useful application
+Welcome to our website: http://www.app.com
+
+%prep
+
+%build
+
+%install
+mkdir -p \$RPM_BUILD_ROOT
+mv -f %{SOURCE1} \$RPM_BUILD_ROOT
+
+%post
+
+%postun
+
+%posttrans
+
+%files
+/opt/app/
+
+%changelog
+

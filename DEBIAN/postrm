@@ -1,0 +1,42 @@
+#!/bin/bash
+
+x_xdg_dirs=/usr/share
+x_xdg_dir=
+x_def_icon_theme=icons/hicolor
+
+function x_init()
+{
+	return;
+}
+
+function x_remove()
+{
+	return;
+}
+
+function x_main()
+{
+	if [ $# -eq 0 ] ; then
+		return;
+	fi
+
+	x_init
+	case $1 in
+		remove )
+			shift
+			x_remove $@
+			;;
+		purge )
+			;;
+		abort-install )
+			;;
+		abort-upgrade )
+			;;
+		failed-upgrade )
+			;;
+	esac
+}
+
+x_main $@
+
+

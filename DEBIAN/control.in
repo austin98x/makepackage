@@ -1,0 +1,14 @@
+Package: app
+Priority: optional
+Section: editors
+Installed-Size: ${PKG_SIZE}
+Maintainer: app@xxx.com
+Architecture: ${PKG_ARCH}
+Multi-Arch: foreign
+Version: ${PKG_VERSION}
+Replaces: app
+Recommends: xxx
+Homepage: http://www.app.com
+Depends: libc6, libstdc++6
+Description: app is useful application
+ Welcome to our website: http://www.app.com

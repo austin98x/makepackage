@@ -1,0 +1,60 @@
+#!/bin/bash
+# configure file for package
+
+############################################################################
+#envriment
+export gCurTimehms=`date +%F`_`date +%H`-`date +%M`-`date +%S`	#2017-1-1_1-1-1
+export gCurTimehm=`date +%F`_`date +%H`-`date +%M`	#2017-1-1_1-1
+export gCurDate=`date +%F`	#2017-1-1
+export gShell="bash"
+export gScriptPath="${PWD}"
+export gExtraConfig=extra-config
+export gCPUCores=`cat /proc/cpuinfo | grep 'processor' | wc -l`	
+export gBuildType=".rpm.deb.pkg"
+export gProjectName="app"
+export gBuildType=.deb
+gBuildType=${gBuildType:-".rpm.deb.pkg.xz"}
+
+if [ "" != "`cat /etc/issue | grep -i 'Ubuntu'`" ]
+then
+	export gOS=ubuntu
+elif [ "" != "`cat /etc/issue | grep -i 'Fedora'`" ]
+then
+	export gOS=fedora
+elif [ "" != "`cat /etc/issue | grep -i 'CentOS'`" ]
+then
+	export gOS=CentOS
+elif [ "" != "`cat /etc/issue | grep -i 'RedHat'`" ]
+then
+	export gOS=RedHat
+fi
+
+############################################################################
+#error code
+export gErrorParam=10
+export gErrorResNotExist=11
+export gErrorMakePkgFailed=12
+
+############################################################################
+#path
+export gInstallPath="/opt/app"
+export gPackagePath="${gScriptPath}/output"
+export gTmpGenPackagePath="${gScriptPath}/tmpPackage"
+export gpackagelogPath="${gScriptPath}/logs"
+
+############################################################################
+#version number
+export gCurVer=0
+export gMajorVer=1
+export gFirstVer=0
+export gSecondVer=0
+
+############################################################################
+#extra config
+if [ -e "${gScriptPath}/${gExtraConfig}" ] ; then
+	. "${gScriptPath}/${gExtraConfig}"
+fi
+
+############################################################################
+gIsConfig=1
+

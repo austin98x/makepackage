@@ -1,0 +1,12 @@
+#!/bin/bash
+
+xdg_data_dir=${XDG_DATA_DIRS##*:}
+xdg_data_dir=${xdg_data_dir:-/usr/share}
+
+xdg_config_dir=${XDG_CONFIG_DIRS##*:}
+xdg_config_dir=${xdg_config_dir:-/etc/xdg}
+
+if [ -e "${gScriptPath}/package_file_list" ] ; then
+	. "${gScriptPath}/package_file_list"
+fi
+

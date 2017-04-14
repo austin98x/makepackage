@@ -1,0 +1,98 @@
+#!/bin/bash
+
+export XDG_DATA_HOME=${XDG_DATA_HOME:-/usr/share/}
+x_xdg_dirs="/usr/share/:$XDG_DATA_DIRS"
+x_xdg_dir=
+x_def_icon_theme=icons/hicolor
+
+function whisperer()
+{
+    echo "-----------------------------------------------------------------------"
+    echo "For more info and more troubleshooting visit:"
+    echo "English:  http://www.app.com"
+    echo "-----------------------------------------------------------------------"
+    echo ""
+    echo "-----------------------------------------------------------------------"
+    echo "app is useful application."
+    echo "-----------------------------------------------------------------------"
+}
+
+function x_init()
+{
+	return;
+}
+
+function x_config()
+{
+	return;
+}
+
+function x_remove()
+{
+	return;
+}
+
+function x_prerm_upgrade()
+{
+	return;
+}
+
+function x_prerm_remove()
+{
+	return;
+}
+
+function x_main()
+{
+	if [ $# -eq 0 ] ; then
+		return;
+	fi
+
+	x_init
+	case $1 in
+		configure )
+			shift
+			x_config $@
+			;;
+		prerm )
+			shift
+			x_prerm_remove $@
+			;;
+		remove )
+			shift
+			x_remove $@
+			;;
+		preupgrade )
+			shift
+			x_prerm_upgrade $@
+			;;
+	esac
+}
+
+post_install()
+{
+	x_main configure
+	whisperer
+}
+
+pre_upgrade()
+{
+	x_main preupgrade
+}
+
+post_upgrade()
+{
+	x_main configure
+	whisperer
+}
+
+pre_remove()
+{
+	x_main prerm
+}
+
+post_remove()
+{
+	x_main remove
+}
+

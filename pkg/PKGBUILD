@@ -1,0 +1,24 @@
+# Maintainer: app Team <app@xxx.com>
+
+pkgname=app
+pkgver=PKG_VER
+pkgrel=1
+pkgdesc="app is useful application."
+arch=('i686' 'x86_64')
+license=("Custom")
+url="http://www.app.com"
+conflicts=('app')
+install=${app}.install 
+
+depends=('glib2' 'libpng12' 'libsm')
+depends+=('desktop-file-utils' 'shared-mime-info' 'xdg-utils')
+
+PKGEXT=".pkg.tar.xz"
+
+package()
+{
+	cd "${srcdir}"
+	mv -f opt "$pkgdir"
+	mv -f usr "$pkgdir"
+	mv -f etc "$pkgdir"
+}
